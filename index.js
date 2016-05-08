@@ -1,54 +1,31 @@
-const createOPCStream = require("opc");
-const createStrand = require("opc/strand");
-const Socket = require("net").Socket;
-const stream = createOPCStream();
-const socket = new Socket().setNoDelay().connect(7890, '192.168.1.230');
-stream.pipe(socket);
-
-
-class Sidewalk {
-
-  constructor(width, height){
-    this.width = width;
-    this.height = height;
-    this.strand = createStrand(width * height);
-    this.columns = [];
-    var i = 0; while (i < width) {
-      this.columns.push(this.strand.slice(height * i, height * (i + 1)));
-      i++;
-    }
-    console.log({columns: this.columns})
-    console.log("Constructed Sidewalk Controller Class into Object", width, 'x', height);
-  }
-
-  fill(colour, fillPercent){
-    console.log("Attempting full fill:")
-      var di, results, x, y;
-      y=0; while (y < this.height) {
-      x = 0; while (x < this.width) {
-          if (Math.random() < fillPercent) {
-            this.columns[x].setPixel(y, colour[1], colour[0], colour[2]);
-          } else {
-            this.columns[x].setPixel(y, 0, 0, 0);
-          }
-          x++
-        }
-        y++
-      }
-    stream.writePixels(0, this.strand.buffer);
-  }
-}
-
-
+const Sidewalk = require('./Sidewalk')
 const colours = [
   [244, 30, 50],
-  [100, 100, 200],
+  [200, 100, 200],
   [233, 40, 100],
   [200, 60, 120],
   [255, 100, 0]
-]
-setInterval(()=>{
-  let sidewalk = new Sidewalk(13,62)
-  let randomColour = colours[Math.floor(Math.random()*colours.length)]
-  sidewalk.fill(randomColour, Math.random())
-}, 1000 )
+];
+
+const bcolours = [
+  [20, 30, 250],
+  [20, 100, 200],
+  [20, 232, 0],
+  [20, 255, 144],
+  [20, 100, 200]
+];
+
+
+
+const sidewalk = new Sidewalk(13,62)
+sidewalk.fillDance(colours, 300);
+//sidewalk.arrowShow(bcolours, 100);
+sidewalk.bounceBall([0, 0 , 255]);
+
+setTimeout(()=>{sidewalk.bounceBall([0, 255 , 0]);}, 5000)
+setTimeout(()=>{sidewalk.bounceBall([0, 100 , 200]);}, 13000)
+setTimeout(()=>{sidewalk.bounceBall([100, 0 , 200]);}, 20000)
+setTimeout(()=>{sidewalk.bounceBall([150, 240 , 2]);}, 30000)
+setTimeout(()=>{sidewalk.bounceBall([0, 0 , 0]);}, 40000)
+setTimeout(()=>{sidewalk.bounceBall([0, 0 , 255]);}, 50000)
+setTimeout(()=>{sidewalk.bounceBall([0, 250 , 5]);}, 57000)
