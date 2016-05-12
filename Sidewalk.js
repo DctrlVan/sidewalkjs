@@ -52,6 +52,42 @@ class Sidewalk {
     y++}
     this._update()
   }
+  
+  rainbow(){
+    var p;
+    p = 0;
+    return setInterval(()=> {
+      var blue, green, i, j, pixel, red;
+      var height = this.height;
+      i = 0;
+      var width = this.width;
+      while (i < height) {
+        if (i < height / 3) {
+          green = 0;
+          red = 255 - 255 * ((height / 3) - i) / (height / 3);
+          blue = 255 - 255 * i / (height / 3);
+        } else if (i < 2 * height / 3) {
+          green = 255 - 255 * ((2 * height / 3) - i) / (height / 3);
+          red = 255 - 255 * (i - (height / 3)) / (height / 3);
+          blue = 0;
+        } else {
+          green = 255 - 255 * (i - (2 * height / 3)) / (height / 3);
+          red = 0;
+          blue = 255 - 255 * (height - i) / (height / 3);
+        }
+        j = 0;
+        while (j < width) {
+          pixel = (i + p) % 62;
+          this.columns[j].setPixel(pixel, green, red, blue);
+          j++;
+        }
+        i++;
+      }
+      this._update();
+      return p++;
+    }, 65);
+  }
+    
 
   fillByColumn(colours, fill){
     var ci, y, x, l, results;
