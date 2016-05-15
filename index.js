@@ -1,4 +1,4 @@
-const Sidewalk = require('./Sidewalk')
+const Sidewalk = require('./SidewalkDrawer')
 const colours = [
   [244, 30, 50],
   [200, 100, 200],
@@ -15,7 +15,9 @@ const bcolours = [
   [20, 100, 200]
 ];
 
-
-
 const sidewalk = new Sidewalk(13,62)
-sidewalk.rainbow()
+sidewalk.fullFill([255,0,0], 1)
+
+point = {x: 10, y:10}
+
+sidewalk.drawPoint([0,0,255], point)

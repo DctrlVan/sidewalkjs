@@ -1,8 +1,8 @@
 
 
-const Sidewalk = require('./Sidewalk');
+const SidewalkConnector = require('./SidewalkConnector');
 
-class Utils extends Sidewalk{
+class SidewalkDrawer extends SidewalkConnector{
 
     fullFill(colour, fillPercent){
       console.log("Attempting full fill:", {colour})
@@ -18,7 +18,9 @@ class Utils extends Sidewalk{
       this.update()
     }
 
-    drawPoint(point){
+    drawPoint(colour, point){
+      this.columns[point.x].setPixel(point.y, colour[1], colour[0], colour[2])
+      this.update()
     }
 
     drawLine(colour, startPoint, endPoint){
@@ -49,7 +51,6 @@ class Utils extends Sidewalk{
         i++;
       }
     }
-    }
 
     vertGradient(startColour, endColour, startRow, endRow) {
     }
@@ -58,8 +59,7 @@ class Utils extends Sidewalk{
     }
 
     writeCharacter(character, centerPoint, orientation, size){
-
     }
-      
-
 }
+
+module.exports = SidewalkDrawer;
