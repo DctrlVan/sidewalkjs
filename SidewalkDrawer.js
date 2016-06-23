@@ -20,7 +20,6 @@ class SidewalkDrawer extends SidewalkConnector{
 
     drawPoint(colour, point){
       this.columns[point.x].setPixel(point.y, colour[1], colour[0], colour[2])
-      this.update()
     }
 
     drawLine(colour, startPoint, endPoint){
