@@ -56,7 +56,7 @@ class SidewalkDrawer extends SidewalkConnector{
       x = 4.5;
       y = 4.5;
       cushion = 4;
-      ballsize = 6;
+      ballsize = 3;
       green = color[1];
       red = color[0];
       blue = color[2];
@@ -114,11 +114,11 @@ class SidewalkDrawer extends SidewalkConnector{
         xvect = xvect + xacc;
         yvect = yvect + yacc;
         r = Math.random();
-        if (r < 0.5) {
-          return ballsize = ballsize + 0.05;
-        } else {
-          return ballsize = ballsize - 0.05;
-        }
+        // if (r < 0.5) {
+        //   return ballsize = ballsize + 0.05;
+        // } else {
+        //   return ballsize = ballsize - 0.05;
+        // }
       }, 50);
     }
 
