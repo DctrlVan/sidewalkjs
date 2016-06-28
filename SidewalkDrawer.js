@@ -115,10 +115,10 @@ class SidewalkDrawer extends SidewalkConnector{
 
   random (red, green, blue, time, sideX, sideY) {
     if (typeof sideX === 'undefined') {
-      x = 13;
+      sideX = 13;
     }
     if (typeof sideY === 'undefined') {
-      y = 62;
+      sideY = 62;
     }
     function getRandomInt (min, max) {
       return Math.floor(Math.random() * (max - min + 1)) + min;
