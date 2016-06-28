@@ -9,7 +9,6 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "kefir": "^3.2.3",
     "opc": "^1.1.2"
   }
 }
