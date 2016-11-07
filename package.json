@@ -1,7 +1,13 @@
 {
   "name": "sidewalkjs",
   "main": "main.js",
+  "scripts": {
+    "start": "nodemon main.js"
+  },
   "dependencies": {
     "opc": "^1.1.2"
+  },
+  "devDependencies": {
+    "nodemon": "^1.11.0"
   }
 }
