@@ -15,7 +15,8 @@ const config = (width, height, ip, port) => {
   const socket = new Socket().setNoDelay().connect(7890, "192.168.1.51")
   stream.pipe(socket)  
   
-  const range = max => Array.from(new Array(max), (x, i) => i)
+  const range = max =>
+    Array.from(new Array(max), (x, i) => i)
 
   const sidewalkConnector = (width, height) => {
     const strand = createStrand(width * height)
@@ -31,15 +32,14 @@ const config = (width, height, ip, port) => {
       return columns
     }
     
-    const columns = createColumns()
-    const update = () => stream.writePixels(0, strand.buffer)
-    
-    return {columns, update}
+    return {
+      "columns": createColumns(),
+      "update": () => stream.writePixels(0, strand.buffer)
+    }
   }
 
-  const connect = sidewalkConnector(width, height)
-
-  const columns = connect.columns,
+  const connect = sidewalkConnector(width, height),
+        columns = connect.columns,
         update = connect.update
 
   const fillPoint = (colour, point) =>
@@ -63,10 +63,12 @@ const config = (width, height, ip, port) => {
     setInterval(() => {
       range(height).map(y =>
         range(width).map(x => {
-          let colour = [colourPreference[0], colourPreference[1], colourPreference[2]]
-          if (typeof colourPreference[0] === "boolean") colour[0] = getRandInt(1, 255)
-          if (typeof colourPreference[1] === "boolean") colour[1] = getRandInt(1, 255)
-          if (typeof colourPreference[2] === "boolean") colour[2] = getRandInt(1, 255)
+          let colour = []
+          range(colourPreference).map(i =>
+            typeof colourPreference[i] === "boolean"
+              ? colour[i] = getRandInt(1, 255)
+              : colour[i] = colourPreference[i]
+          )
           fillPoint(colour, {x, y})
         })
       )
@@ -142,7 +144,7 @@ const config = (width, height, ip, port) => {
     }, 50)
   }
   
-  return {fillFull, fillPoint, animateRand, animateCircle, drawCircle}
+  return {fillFull, fillPoint, drawCircle, animateRand, animateCircle}
 }
 
 module.exports = config
