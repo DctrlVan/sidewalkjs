@@ -62,7 +62,7 @@ const config = (width, height) => {
     }, time)
   }
 
-  return {fillFull, drawPoint, animateRand}
+  return {fillFull, fillPoint, animateRand}
 }
 
 module.exports = config
