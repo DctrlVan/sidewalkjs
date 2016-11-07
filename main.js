@@ -1,3 +1,3 @@
 const config = require("./sidewalk")
 const sidewalk = config(13, 62)
-sidewalk.animateRand([0, true, true], 850)
+sidewalk.animateRand([true, 0, true], 850)
