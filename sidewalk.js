@@ -30,6 +30,9 @@ const config = (width, height) => {
   const columns = connect.columns,
         update = connect.update
 
+  const fillPoint = (colour, point) =>
+    columns[point.x].setPixel(point.y, colour[1], colour[0], colour[2])
+  
   const fillFull = (colour, fillPercent) => {
     range(height).map(y => {
       range(width).map(x =>
@@ -40,9 +43,6 @@ const config = (width, height) => {
     })
     update()
   }
-
-  const drawPoint = (colour, point) =>
-    columns[point.x].setPixel(point.y, colour[1], colour[0], colour[2])
 
   const getRandInt = (min, max) =>
     Math.floor(Math.random() * (max - min + 1)) + min
