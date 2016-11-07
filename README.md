@@ -20,7 +20,7 @@ In <a href="https://github.com/paullucas/sidewalkjs/blob/master/main.js#L2">main
 <br>
 Run the application:
 <br>
-```node main.js```
+```npm start```
 
 ### Config Function Arguments
 Argument | Type | Meaning | Required? | Default
