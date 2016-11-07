@@ -4,7 +4,7 @@ Tool for controlling LED sidewalk
 ## Quick Start
 Clone repository:
 <br>
-```git clone https://github.com/paullucas/sidewalkjs```
+```git clone https://github.com/d-ctrl/sidewalkjs.git```
 <br>
 Change current directory:
 <br>
@@ -14,7 +14,7 @@ Install dependencies:
 <br>
 ```npm i```
 <br>
-In <a href="https://github.com/paullucas/sidewalkjs/blob/master/main.js#L2">main.js</a>, you will need to modify the arguments supplied to the config function:
+In <a href="https://github.com/d-ctrl/sidewalkjs/blob/master/main.js#L2">main.js</a>, you will need to modify the arguments supplied to the config function:
 <br>
 ```const sidewalk = config(13, 62, "192.168.1.51", 7890)```
 <br>
