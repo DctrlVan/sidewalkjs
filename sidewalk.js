@@ -2,10 +2,19 @@ const createOPCStream = require("opc")
 const createStrand = require("opc/strand")
 const Socket = require("net").Socket
 const stream = createOPCStream()
-const socket = new Socket().setNoDelay().connect(7890, "192.168.1.51")
-stream.pipe(socket)
 
-const config = (width, height) => {
+const config = (width, height, ip, port) => {
+  typeof ip === "undefined"
+    ? ip = "192.168.1.51"
+    : ip = ip
+
+  typeof port === "undefined"
+    ? port = 7890
+    : port = port
+
+  const socket = new Socket().setNoDelay().connect(7890, "192.168.1.51")
+  stream.pipe(socket)  
+  
   const range = max => Array.from(new Array(max), (x, i) => i)
 
   const sidewalkConnector = (width, height) => {
