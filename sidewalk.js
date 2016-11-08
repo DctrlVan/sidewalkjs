@@ -64,7 +64,7 @@ const config = (width, height, ip, port) => {
       range(height).map(y =>
         range(width).map(x => {
           let colour = []
-          range(colourPreference).map(i =>
+          range(colourPreference.length).map(i =>
             typeof colourPreference[i] === "boolean"
               ? colour[i] = getRandInt(1, 255)
               : colour[i] = colourPreference[i]
